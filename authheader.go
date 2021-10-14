@@ -8,15 +8,15 @@ import (
 type authheader string
 
 func (h authheader) IsBasic() bool {
-	return strings.HasPrefix(string(h), "Basic ")
+	return strings.Index(string(h), "Basic") != -1
 }
 
 func (h authheader) IsNegotiate() bool {
-	return strings.HasPrefix(string(h), "Negotiate")
+	return strings.Index(string(h), "Negotiate") != -1
 }
 
 func (h authheader) IsNTLM() bool {
-	return strings.HasPrefix(string(h), "NTLM")
+	return strings.Index(string(h), "NTLM") != -1
 }
 
 func (h authheader) GetData() ([]byte, error) {
